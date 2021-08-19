@@ -7,3 +7,8 @@ git rm --cached node_modules/*
 git rm --cached package-lock.json 
 
 sau đó thêm file .gitignore
+
+
+
+tiếp theo là vào file gulp thấy cấu trúc của cái đường dẫn bị sai kaif 
+gulp.src('SCSS/client.scss') =>>>>>>> sai đường dẫn
