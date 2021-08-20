@@ -20,5 +20,13 @@
   "devDependencies": {
     "gulp": "^4.0.2"
   },
-  "description": ""
+  "description": "Đầu tiên là không đc push node_modules lên git, vì ng khác pull về sẽ nặng",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThanhThien3046/layout.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ThanhThien3046/layout/issues"
+  },
+  "homepage": "https://github.com/ThanhThien3046/layout#readme"
 }
