@@ -1,7 +1,6 @@
 {
   "name": "cp-layout",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,5 +12,14 @@
   },
   "devDependencies": {
     "gulp-file-include": "^2.3.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThanhThien3046/layout.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ThanhThien3046/layout/issues"
+  },
+  "homepage": "https://github.com/ThanhThien3046/layout#readme",
+  "description": ""
 }
