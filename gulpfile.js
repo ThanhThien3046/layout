@@ -1,25 +1,33 @@
 var gulp        = require('gulp')
 var path        = require('path')
-var fileinclude = require('gulp-file-include')
-var sass        = require('gulp-sass');
+// var fileinclude = require('gulp-file-include')
+var sass        = require('gulp-sass')(require('sass'));
 
-gulp.task('fileinclude', function() {
-    return gulp.src([ "src/pages/*.html" ])
-        .pipe(fileinclude({
-            prefix: '@@',
-            basepath: '@file'
-        }))
-       .pipe(gulp.dest(path.join(__dirname, '/dist/pages/')))
-})
+// gulp.task('fileinclude', function() {
+//     return gulp.src([ "src/pages/*.html" ])
+//         .pipe(fileinclude({
+//             prefix: '@@',
+//             basepath: '@file'
+//         }))
+//        .pipe(gulp.dest(path.join(__dirname, '/dist/pages/')))
+// })
 
 gulp.task('watch', function () {
-    gulp.watch('src/pages/*.html', gulp.series('fileinclude'))
-    gulp.watch('src/partial/*.html', gulp.series('fileinclude'))
-    gulp.watch('src/sass/*.sass', gulp.series('sass'))
+    // gulp.watch('src/pages/*.html', gulp.series('fileinclude'))
+    // gulp.watch('src/partial/*.html', gulp.series('fileinclude'))
+    gulp.watch('src/sass/*.scss', gulp.series('sass'))
 });
 
+// gulp.task('sass', function () {
+//     return gulp.src([ "src/sass/*.sass" ])
+//         .pipe(sass())
+//         .pipe(gulp.dest(path.join(__dirname, '/dist/css/')));
+// });
+
+
 gulp.task('sass', function () {
-    return gulp.src([ "src/sass/*.sass" ])
-        .pipe(sass())
-        .pipe(gulp.dest(path.join(__dirname, '/dist/css/')));
-});
+    return gulp.src('src/sass/index.scss')
+       .pipe(sass())
+    //    .pipe(minifyCss({ compatibility: 'ie8' }))
+       .pipe(gulp.dest(path.join(__dirname, '/dist/css/')));
+ });
