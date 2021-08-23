@@ -18,16 +18,9 @@ gulp.task('watch', function () {
     gulp.watch('src/sass/*.scss', gulp.series('sass'))
 });
 
-// gulp.task('sass', function () {
-//     return gulp.src([ "src/sass/*.sass" ])
-//         .pipe(sass())
-//         .pipe(gulp.dest(path.join(__dirname, '/dist/css/')));
-// });
-
-
 gulp.task('sass', function () {
-    return gulp.src('src/sass/index.scss')
+    return gulp.src('src/sass/*.scss')
        .pipe(sass())
-    //    .pipe(minifyCss({ compatibility: 'ie8' }))
+    // .pipe(minifyCss({ compatibility: 'ie8' }))
        .pipe(gulp.dest(path.join(__dirname, '/dist/css/')));
  });
