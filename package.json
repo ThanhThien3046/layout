@@ -7,11 +7,13 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "gulp": "^4.0.2"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "gulp-file-include": "^2.3.0"
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-file-include": "^2.3.0",
+    "gulp-sass": "^5.0.0",
+    "sass": "^1.38.0"
   },
   "repository": {
     "type": "git",
@@ -21,5 +23,6 @@
     "url": "https://github.com/ThanhThien3046/layout/issues"
   },
   "homepage": "https://github.com/ThanhThien3046/layout#readme",
+  "keywords": [],
   "description": ""
 }
