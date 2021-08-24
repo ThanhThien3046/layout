@@ -1,4 +1,11 @@
-body{
-  color:yellow;
+$red   : #dc3545 !default;
+$orange: #fd7e14 !default;
 
+.text-#{$red}{
+
+  color: $red;
+}
+.bg-#{$orange}{
+    
+  background-color: $orange;
 }
