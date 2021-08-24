@@ -19,6 +19,9 @@ gulp.task('watch', function () {
     gulp.watch('src/pages/*.html', gulp.series('fileinclude'))
     gulp.watch('src/partial/*.html', gulp.series('fileinclude'))
     gulp.watch('src/sass/*.scss', gulp.series('sass'))
+    gulp.watch([
+        'src/JAVASCRIPT/client/*.js',
+     ], gulp.series('js'));
 });
 
 gulp.task('sass', function () {
