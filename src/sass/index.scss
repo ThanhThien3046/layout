@@ -1,11 +1,6 @@
 $red   : #1e693b !default;
 $orange: #fd7e14 !default;
-
-.text-#{$red}{
-
-  color: $red;
-}
-.bg-#{$orange}{
-    
-  background-color: $orange;
+.hung {
+  font-size: 2px;
+  color: red;
 }
