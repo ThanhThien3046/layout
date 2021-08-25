@@ -1,1 +1,1 @@
-console.log("thien")
+console.log("test javascript")
