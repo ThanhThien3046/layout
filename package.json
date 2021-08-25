@@ -9,13 +9,18 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "browser-sync": "^2.27.5",
+    "gulp-minify-css": "^1.2.4"
+  },
   "devDependencies": {
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-file-include": "^2.3.0",
+    "gulp-livereload": "^4.0.2",
+    "gulp-minify": "^3.1.0",
     "gulp-sass": "^5.0.0",
-    "sass": "^1.38.0"
+    "sass": "^1.38.1"
   },
   "repository": {
     "type": "git",
@@ -26,5 +31,5 @@
   },
   "homepage": "https://github.com/ThanhThien3046/layout#readme",
   "keywords": [],
-  "description": ""
+  "description": "// de tao file package.json ban dau khoi tao bang lenh: npm init -y"
 }
