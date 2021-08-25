@@ -26,6 +26,9 @@ gulp.task('js', function() {
     return gulp.src("src/javascript/*.js")
        .pipe(cache('linting'))
        .pipe(uglify() )
+       .pipe(rename(function(path){
+           console.log(path.basename);
+       }))
        // .pipe(rename({ suffix: '.min' }))
        .pipe(gulp.dest(path.join(__dirname, '/dist/js/')))
 });
@@ -35,7 +38,7 @@ gulp.task('fileinclude', function() {
             prefix: '@@',
             basepath: '@file'
         }))
-       .pipe(gulp.dest(path.join(__dirname, '/dist/pages/')))
+       .pipe(gulp.dest(path.join(__dirname, '../wemarine/indexのコピー.html'))) //thay doi duong dan
 })
 // RELOAD
 gulp.task('reload', function () {
