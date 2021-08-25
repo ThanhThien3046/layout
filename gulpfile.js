@@ -1,43 +1,58 @@
-var gulp        = require('gulp');
-var path        = require('path');
-var sass       = require('gulp-sass')(require('sass'));
+var gulp         = require('gulp');
+var path         = require('path');
+var sass         = require('gulp-sass')(require('sass'));
+var uglify       = require('gulp-uglify');
+var cssnano      = require('gulp-cssnano');
+var autoprefixer = require('gulp-autoprefixer');
+var fileinclude  = require('gulp-file-include');
+var rename       = require("gulp-rename")
+var cache        = require('gulp-cached')
+
 // đầu tiên hãy tạo 1 thể hiện của browserSync
 var browserSync = require('browser-sync').create();
 
 gulp.task('sass', function () {
     return gulp.src('src/sass/*.scss')
        .pipe(sass())
-       .pipe(gulp.dest(path.join(__dirname, 'dist/css')))
-       .pipe(browserSync.stream({match: '**/*.css'}))
- });
+       .pipe(autoprefixer({
+            overrideBrowserslist: ['> 1%']
+        }))
+       .pipe(cssnano())
+       .pipe(gulp.dest(path.join(__dirname, 'dist/css'))) /// tạo mới folder
+       .pipe(browserSync.stream({match: '**/*.css'})) /// xem stream nó khác reload như nào nhé!!!
+});
 
-// Watch Files: nghĩa là khi những file thuộc folder pages và có đuôi .html thay đổi 
-/// => code thì sẽ build lại code với task fileinclude
+gulp.task('js', function() {
+    return gulp.src("src/javascript/*.js")
+       .pipe(cache('linting'))
+       .pipe(uglify() )
+       // .pipe(rename({ suffix: '.min' }))
+       .pipe(gulp.dest(path.join(__dirname, '/dist/js/')))
+});
+gulp.task('fileinclude', function() {
+    return gulp.src([ "src/pages/*.html" ])
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: '@file'
+        }))
+       .pipe(gulp.dest(path.join(__dirname, '/dist/pages/')))
+})
+// RELOAD
+gulp.task('reload', function () {
+    browserSync.reload();
+});
 gulp.task('watch', function () {
     browserSync.init({
         server: {
-            // như này là browserSync tự tạo cho chúng ta 1 con server (dạng như localhost:3000) 
-            // đồng thời con server này cấp thư mục là project
-            // code của chúng ta là PROJECTS/src/page/index.html => localhost:3000/src/page/index.html sẽ thấy
-            baseDir: "./" 
+            baseDir: "./dist"
+            // directory: true
         }
     });
     /// cấu hình html
-    gulp.watch([
-        /// cấu hình này là khi file có đuôi .html trong folder src/pages/ bị thay đổi thì code sẽ được cập nhật mới lên trình duyệt ngay
-        // code sẽ dùng tính năng reload
-        "src/pages/*.html",
-    ]).on("change", browserSync.reload )
+    gulp.watch('src/pages/*.html', gulp.series('fileinclude')).on("change", browserSync.reload )
+    gulp.watch('src/partial/*.html', gulp.series('fileinclude')).on("change", browserSync.reload )
     /// cấu hình cho js
-    gulp.watch([
-        /// cấu hình này là khi file có đuôi .js trong folder src/javasctipt/ bị thay đổi thì code sẽ được cập nhật mới lên trình duyệt ngay
-        // code sẽ dùng tính năng reload
-        "src/javascript/*.js",
-    ]).on("change", browserSync.reload )
+    gulp.watch("src/JAVASCRIPT/*.js",  gulp.series('js')).on("change", browserSync.reload )
     /// cấu hình cho scss
-    gulp.watch([
-        /// cấu hình này là khi file có đuôi .js trong folder src/javasctipt/ bị thay đổi thì code sẽ được cập nhật mới lên trình duyệt ngay
-        // code sẽ dùng tính năng reload
-        "src/scss/*.scss",
-    ],  gulp.series('sass'))
+    gulp.watch("src/sass/*.scss",  gulp.series('sass'))
 });
