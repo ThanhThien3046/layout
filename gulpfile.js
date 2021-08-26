@@ -38,12 +38,9 @@ gulp.task('fileinclude', function() {
             prefix: '@@',
             basepath: '@file'
         }))
-       .pipe(gulp.dest(path.join(__dirname, '../wemarine/indexのコピー.html'))) //thay doi duong dan
+       .pipe(gulp.dest(path.join(__dirname, '/dist/pages/'))) 
 })
-// RELOAD
-gulp.task('reload', function () {
-    browserSync.reload();
-});
+
 gulp.task('watch', function () {
     browserSync.init({
         server: {

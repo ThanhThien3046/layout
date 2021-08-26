@@ -1,0 +1,1 @@
+p{border:1px solid red;text-align:center;width:100px;position:relative;animation:a 5s ease-in-out 13s infinite alternate;-moz-animation:a 5s ease-out infinite;-webkit-animation:a 5s ease-out infinite;-o-animation:a 5s ease-out infinite}@keyframes a{0%{left:0}to{left:1000px}}
