@@ -1,0 +1,15 @@
+p {
+    border: 1px solid red;
+    text-align: center;
+    width: 100px;
+    position: relative;
+    animation: myAnimation 5s ease-in-out 13s infinite alternate;
+    -moz-animation: myAnimation 5s ease-out infinite;
+    -webkit-animation: myAnimation 5s ease-out infinite;
+    -o-animation: myAnimation 5s ease-out infinite;
+}
+
+@keyframes myAnimation {
+    from {left: 0px;}
+    to {left: 1000px;} 
+}

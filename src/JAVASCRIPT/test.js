@@ -1,4 +1,10 @@
-// const oldArray = [1, 2, 3];
-// const newArray = [...oldArray, 4, 5]; //Spread syntax is (... of ...oldArray, 4, 5)
-// console.log(newArray);
-console.log('day la dong chu test');
+var loader = function() {
+    setTimeout(function() {
+        $('#loader').css({ 'opacity': 0, 'visibility':'hidden' });
+    }, 1000);
+};
+$(function(){
+    loader();  
+});
+
+console.log("test content");

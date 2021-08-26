@@ -1,1 +1,1 @@
-console.log("day la dong chu test");
+var loader=function(){setTimeout(function(){$("#loader").css({opacity:0,visibility:"hidden"})},1e3)};$(function(){loader()}),console.log("test content");
